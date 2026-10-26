@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AwaitOffer · 浏览器连接</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <span class="mark">A<span>·</span></span>
+      <div>
+        <h1>AwaitOffer</h1>
+        <span>等一个好消息</span>
+      </div>
+      <span class="local">本地</span>
+    </header>
+    <main>
+      <h2>把浏览器与工作台连起来。</h2>
+      <p>复用当前 Edge 的有效登录，在本机同步已适配官网的招聘进度。</p>
+      <button id="connect">连接 AwaitOffer</button>
+      <p id="status" role="status">请先启动本地服务，再连接扩展。</p>
+    </main>
+    <footer>
+      只访问列出的招聘站点与本机服务；不读取或导出 Cookie、密码。登录与验证码由你在官网处理。
+    </footer>
+    <script src="popup.js"></script>
+  </body>
+</html>

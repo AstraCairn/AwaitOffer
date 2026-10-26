@@ -1,0 +1,30 @@
+name: 问题反馈
+description: 描述可复现的问题，请使用脱敏信息
+body:
+  - type: markdown
+    attributes:
+      value: 请勿上传真实数据库、备份、简历、Cookie、Token、密钥或完整招聘响应。诊断和截图也需先检查。
+  - type: textarea
+    id: environment
+    attributes:
+      label: 运行环境
+      description: Windows、Node、Edge、AwaitOffer 与扩展版本
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 复现步骤
+      description: 如涉及站点，请只提供不含认证参数的官网域名；说明是否已登录和是否出现验证码
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: 预期与实际结果
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 脱敏后的错误或截图

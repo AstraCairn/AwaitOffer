@@ -1,0 +1,46 @@
+{
+  "name": "awaitoffer",
+  "version": "0.2.0",
+  "private": true,
+  "description": "本地校招投递工作台：记录投递、同步官网进度、追踪每次变化。",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=24.15.0 <25"
+  },
+  "scripts": {
+    "dev": "concurrently -k \"tsx watch server/index.ts --no-open\" \"vite --host 127.0.0.1\"",
+    "build": "tsc -p tsconfig.server.json && tsc --noEmit && tsc -p tsconfig.extension.json && vite build && npm run build:extension",
+    "start": "node dist-server/server/index.js",
+    "test": "vitest run",
+    "test:ui": "node scripts/test-ui.mjs",
+    "screenshots": "node scripts/test-ui.mjs --screenshots",
+    "check": "tsc --noEmit && tsc --noEmit -p tsconfig.server.json && tsc -p tsconfig.extension.json",
+    "build:extension": "node scripts/build-extension.mjs"
+  },
+  "dependencies": {
+    "@fastify/static": "^8.0.0",
+    "fastify": "^5.0.0",
+    "lucide-react": "^0.468.0",
+    "playwright": "^1.56.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "ws": "^8.22.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.3.5",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/ws": "^8.18.2",
+    "@vitejs/plugin-react": "^5.0.0",
+    "concurrently": "^9.0.0",
+    "esbuild": "^0.28.2",
+    "prettier": "^3.9.10",
+    "tsx": "^4.0.0",
+    "typescript": "^5.9.0",
+    "vite": "^7.0.0",
+    "vitest": "^3.2.0"
+  }
+}

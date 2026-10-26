@@ -1,0 +1,16 @@
+node_modules/
+dist/
+dist-server/
+data/
+.env*
+*.log
+coverage/
+test-results/
+.playwright/
+extension/*.js
+extension/build-info.json*
+resume/
+.vibe-images/
+playwright-report/
+.tmp/
+*.tsbuildinfo

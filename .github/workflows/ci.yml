@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm.cmd ci
+      - run: npm.cmd run check
+      - run: npm.cmd test
+      - run: npm.cmd run build
+      - run: npm.cmd run test:ui
+      - name: Verify build did not modify source
+        run: git diff --exit-code
+      - name: Upload failed UI screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ui-failure
+          path: test-results/
+          if-no-files-found: ignore

@@ -1,0 +1,93 @@
+{
+  "manifest_version": 3,
+  "name": "AwaitOffer · 日常 Edge 连接",
+  "version": "0.3.7",
+  "description": "在本机同步招聘进度，复用当前 Edge 的登录。无需读取或导出 Cookie、密码。",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAp/+xJA+oB0oJ7HRFsbqC2gwhU+gCcon7NYTWv8Q+eUqbpI+2CvGtj4Il8j0u45NYN5kz9MX+i4sKz6cf3fJS+6PHYUM0oQ01EEq8G8gXExB6ciljms16KwUY1P8GUDXOO4Ow7kZ+aMdit7cYYRbX/FGF2pUPuTQCdrRFfTGorWaT8Jyfa4d+tUiEWX5POiALh77S/XFnDXb2jD1LGG4k/dkV190UNz3e9BsNVdjr3kcAA99041pEZ7xwFI2l6xjtculi40WBL8XpA0Y+IkV0P0PHv0nY2DrET7Er/Wgdd8uUswRdXkpxi4s+BcrUErsbzU1bqm2rR3wKsUS+a7er3wIDAQAB",
+  "permissions": [
+    "storage",
+    "alarms",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://*.jobs.feishu.cn/*",
+    "https://*.mokahr.com/*",
+    "https://*.zhiye.com/*",
+    "https://we.zyt.com/*",
+    "https://apply.careers.dji.com/*",
+    "https://hr-campus.vivo.com/*",
+    "https://career.huawei.com/*",
+    "https://campus-talent.alibaba.com/*",
+    "https://campus.kuaishou.cn/*",
+    "https://jobs.mihoyo.com/*",
+    "https://career.honor.com/*",
+    "https://join.qq.com/*",
+    "https://talent.lenovo.com.cn/*",
+    "https://talent.baidu.com/*",
+    "https://campus.jd.com/*",
+    "https://talent.antgroup.com/*",
+    "http://127.0.0.1:3182/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "AwaitOffer"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.jobs.feishu.cn/*",
+        "https://*.mokahr.com/*",
+        "https://*.zhiye.com/*",
+        "https://we.zyt.com/*",
+        "https://apply.careers.dji.com/*",
+        "https://hr-campus.vivo.com/*",
+        "https://career.huawei.com/*",
+        "https://campus-talent.alibaba.com/*",
+        "https://campus.kuaishou.cn/*",
+        "https://jobs.mihoyo.com/*",
+        "https://career.honor.com/*",
+        "https://join.qq.com/*",
+        "https://talent.lenovo.com.cn/*",
+        "https://talent.baidu.com/*",
+        "https://campus.jd.com/*",
+        "https://talent.antgroup.com/*"
+      ],
+      "js": [
+        "capture.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://*.jobs.feishu.cn/*",
+        "https://*.mokahr.com/*",
+        "https://*.zhiye.com/*",
+        "https://we.zyt.com/*",
+        "https://apply.careers.dji.com/*",
+        "https://hr-campus.vivo.com/*",
+        "https://career.huawei.com/*",
+        "https://campus-talent.alibaba.com/*",
+        "https://campus.kuaishou.cn/*",
+        "https://jobs.mihoyo.com/*",
+        "https://career.honor.com/*",
+        "https://join.qq.com/*",
+        "https://talent.lenovo.com.cn/*",
+        "https://talent.baidu.com/*",
+        "https://campus.jd.com/*",
+        "https://talent.antgroup.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_start",
+      "world": "ISOLATED"
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src http://127.0.0.1:3182 ws://127.0.0.1:3182"
+  }
+}
